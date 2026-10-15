@@ -82,7 +82,15 @@ model Template {
   @@index([churchId])
 }
 
-enum CampaignStatus { draft scheduled sending sent partially_failed failed cancelled }
+enum CampaignStatus {
+  draft
+  scheduled
+  sending
+  sent
+  partially_failed
+  failed
+  cancelled
+}
 
 model Campaign {
   id            String  @id @default(uuid())
@@ -107,7 +115,15 @@ model Campaign {
   @@index([churchId, status, createdAt])
 }
 
-enum RecipStatus { pending sent delivered failed skipped_dnd skipped_optout invalid }
+enum RecipStatus {
+  pending
+  sent
+  delivered
+  failed
+  skipped_dnd
+  skipped_optout
+  invalid
+}
 
 model CampaignRecipient {
   id         String  @id @default(uuid())
@@ -122,7 +138,11 @@ model CampaignRecipient {
   @@index([campaignId, status])
 }
 
-enum OptSource { manual import stop }
+enum OptSource {
+  manual
+  import
+  stop
+}
 
 model OptOut {
   id        String  @id @default(uuid())
@@ -135,7 +155,13 @@ model OptOut {
   @@unique([churchId, phone])
 }
 
-enum TxnType { topup send_deduction refund adjustment reversal }
+enum TxnType {
+  topup
+  send_deduction
+  refund
+  adjustment
+  reversal
+}
 
 model CreditTxn {
   id          String  @id @default(uuid())
