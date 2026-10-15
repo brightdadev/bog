@@ -9,13 +9,14 @@ services:
   - type: web
     name: bog-api-web
     runtime: node
-    nodeVersion: 22
     rootDir: server
     buildCommand: npm ci && npm run build && npx prisma generate
     preDeployCommand: npx prisma migrate deploy
     startCommand: node dist/src/server.js
     healthCheckPath: /health
     envVars:
+      - key: NODE_VERSION
+        value: "22"
       - key: NODE_ENV
         value: production
       - key: DATABASE_URL
@@ -44,11 +45,12 @@ services:
   - type: worker
     name: bog-api-worker
     runtime: node
-    nodeVersion: 22
     rootDir: server
     buildCommand: npm ci && npm run build && npx prisma generate
     startCommand: node dist/src/workers/index.js
     envVars:
+      - key: NODE_VERSION
+        value: "22"
       - key: NODE_ENV
         value: production
       - key: DATABASE_URL
