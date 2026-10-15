@@ -2,8 +2,12 @@
 # BOG — God's Banner of Grace Ministries · Bulk SMS Broadcast Tool
 # @file    render.yaml
 # @author  Bright Da Dev
-# @phase   1 — Skeleton & contracts (patch: single free service, in-process worker)
-# @purpose Render Blueprint: one free web service; BullMQ consumer runs in-process.
+# @phase   1 — Skeleton & contracts (patch 2: fully free-tier compatible)
+# @purpose Render Blueprint: one free web service; BullMQ consumer in-process.
+#          Migrations run manually via Render Shell in v1 because Render gates
+#          preDeployCommand behind paid instances. When v1.1 pays for the
+#          always-on worker, restore this line under the service:
+#            preDeployCommand: npx prisma migrate deploy
 #
 services:
   - type: web
@@ -11,7 +15,6 @@ services:
     runtime: node
     rootDir: server
     buildCommand: npm ci && npm run build && npx prisma generate
-    preDeployCommand: npx prisma migrate deploy
     startCommand: node dist/src/server.js
     healthCheckPath: /health
     envVars:
