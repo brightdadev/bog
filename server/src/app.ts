@@ -12,7 +12,7 @@ import { healthRoutes } from './routes/health.routes';
 
 export async function buildApp() {
   const app = Fastify({
-    logger: logger,
+    loggerInstance: logger,
   });
 
   registerErrorHandler(app);
