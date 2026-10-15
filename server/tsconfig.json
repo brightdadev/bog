@@ -1,0 +1,21 @@
+// BOG — God's Banner of Grace Ministries · Bulk SMS Broadcast Tool
+// @file    tsconfig.json
+// @author  Bright Da Dev
+// @phase   1 — Skeleton & contracts
+// @purpose Strict CommonJS TypeScript config; rootDir is "." so prisma/seed.ts compiles cleanly.
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "CommonJS",
+    "rootDir": ".",
+    "outDir": "dist",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "sourceMap": true
+  },
+  "include": ["src/**/*", "prisma/**/*"],
+  "exclude": ["node_modules", "dist"]
+}

@@ -1,0 +1,14 @@
+#
+# BOG — God's Banner of Grace Ministries · Bulk SMS Broadcast Tool
+# @file    .gitignore
+# @author  Bright Da Dev
+# @phase   1 — Skeleton & contracts
+# @purpose Ignore node_modules, build artifacts, and local secrets.
+#
+node_modules/
+dist/
+.env
+.env.local
+*.log
+.DS_Store
+Thumbs.db
