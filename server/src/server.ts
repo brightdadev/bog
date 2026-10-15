@@ -2,10 +2,11 @@
  * BOG — God's Banner of Grace Ministries · Bulk SMS Broadcast Tool
  * @file    src/server.ts
  * @author  Bright Da Dev
- * @phase   1 — Skeleton & contracts
- * @purpose Web entrypoint.
+ * @phase   1 — Skeleton & contracts (patch: web + in-process worker)
+ * @purpose Web entrypoint; owns process lifecycle (listen, runtime, shutdown).
  */
 import { buildApp } from './app';
+import { startWorkerRuntime } from './workers/runtime';
 
 async function start() {
   const app = await buildApp();
@@ -18,6 +19,18 @@ async function start() {
     app.log.error(err);
     process.exit(1);
   }
+
+  const runtime = startWorkerRuntime();
+
+  const shutdown = async (signal: string) => {
+    app.log.info(`Received ${signal}. Closing...`);
+    runtime.stop();
+    await app.close();
+    process.exit(0);
+  };
+
+  process.on('SIGTERM', () => void shutdown('SIGTERM'));
+  process.on('SIGINT', () => void shutdown('SIGINT'));
 }
 
-start();
+void start();
