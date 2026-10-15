@@ -1,0 +1,94 @@
+﻿* { box-sizing: border-box; margin: 0; padding: 0; }
+body { 
+    font-family: Arial, Helvetica, sans-serif; 
+    background: #e5e5e5; 
+    display: flex; 
+    justify-content: center; 
+    padding: 20px; 
+    color: #222;
+}
+.phone-frame { 
+    width: 375px; 
+    height: 812px; 
+    background: #fff; 
+    border: 2px solid #333; 
+    border-radius: 12px; /* Slight rounding for a friendlier feel */
+    position: relative; 
+    overflow: hidden; 
+    display: flex; 
+    flex-direction: column; 
+}
+.header { 
+    padding: 20px; 
+    border-bottom: 1px solid #ddd; 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    background: #fafafa;
+}
+.header h1 { font-size: 20px; font-weight: normal; color: #111; }
+.content { flex: 1; padding: 20px; overflow-y: auto; padding-bottom: 80px; }
+
+/* Typography */
+.text-sm { font-size: 14px; } 
+.text-xs { font-size: 12px; }
+.text-muted { color: #666; } 
+.font-bold { font-weight: bold; }
+.mb-2 { margin-bottom: 10px; } .mb-4 { margin-bottom: 20px; }
+.mt-4 { margin-top: 20px; }
+
+/* Cards & Boxes */
+.box { border: 1px solid #ccc; padding: 15px; margin-bottom: 15px; background: #fff; border-radius: 8px; }
+.box-light { border: 1px dashed #aaa; padding: 15px; margin-bottom: 15px; background: #f9f9f9; border-radius: 8px; }
+.balance-box { text-align: center; background: #f0f4f8; border-color: #b0c4de; }
+.balance-box .amount { font-size: 32px; font-weight: bold; margin: 10px 0; color: #111; }
+
+/* Inputs */
+.input-group { margin-bottom: 15px; }
+.input-group label { display: block; font-size: 14px; font-weight: bold; margin-bottom: 8px; color: #333; }
+.input-field, .select-field, .textarea-field { 
+    width: 100%; padding: 14px; border: 1px solid #ccc; 
+    font-size: 16px; background: #fff; font-family: inherit; 
+    border-radius: 8px; 
+}
+.textarea-field { resize: none; }
+
+/* Buttons */
+.btn { 
+    display: block; width: 100%; padding: 16px; border: 1px solid #333; 
+    font-size: 16px; font-weight: bold; text-align: center; cursor: pointer; 
+    text-decoration: none; font-family: inherit; background: #fff;
+    border-radius: 8px; margin-bottom: 10px;
+}
+.btn-primary { background: #333; color: #fff; border-color: #333; }
+.btn-secondary { background: #fff; color: #333; border-style: dashed; }
+
+/* Lists */
+.list-item { 
+    border: 1px solid #ddd; padding: 15px; margin-bottom: 10px; 
+    display: flex; justify-content: space-between; align-items: center; 
+    border-radius: 8px; background: #fff;
+}
+.list-item .title { font-weight: bold; font-size: 15px; margin-bottom: 5px; }
+.list-item .subtitle { font-size: 13px; color: #666; }
+
+/* Badges */
+.badge { padding: 4px 10px; border: 1px solid #ccc; font-size: 11px; font-weight: bold; border-radius: 12px; background: #f0f0f0; }
+.badge-success { background: #e6ffe6; border-color: #4caf50; color: #2e7d32; }
+.badge-warning { background: #fff8e1; border-color: #ffb300; color: #f57f17; }
+
+/* Bottom Nav */
+.bottom-nav { 
+    position: absolute; bottom: 0; left: 0; right: 0; height: 65px; 
+    background: #fff; border-top: 1px solid #ddd; 
+    display: flex; justify-content: space-around; align-items: center; 
+}
+.nav-item { text-decoration: none; color: #666; font-size: 13px; font-weight: normal; }
+.nav-item.active { color: #111; font-weight: bold; text-decoration: underline; }
+
+/* Specifics */
+.logo-box { width: 60px; height: 60px; border: 2px solid #333; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: bold; margin: 0 auto 20px; background: #f0f0f0; }
+.cost-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #eee; font-size: 14px; }
+.cost-row:last-child { border-bottom: none; font-weight: bold; font-size: 16px; padding-top: 10px; }
+.profile-box { display: flex; align-items: center; gap: 15px; }
+.avatar { width: 45px; height: 45px; border: 1px solid #ccc; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; background: #f0f0f0; }
