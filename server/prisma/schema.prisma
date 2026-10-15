@@ -109,6 +109,7 @@ model Campaign {
   status        CampaignStatus
   scheduledAt   DateTime?
   sentAt        DateTime?
+  createdAt     DateTime @default(now())
   refIds        String[]
   recipients    CampaignRecipient[]
   txns          CreditTxn[]
