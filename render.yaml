@@ -1,0 +1,46 @@
+#
+# BOG — God's Banner of Grace Ministries · Bulk SMS Broadcast Tool
+# @file    render.yaml
+# @author  Bright Da Dev
+# @phase   1 — Skeleton & contracts (patch 2: fully free-tier compatible)
+# @purpose Render Blueprint: one free web service; BullMQ consumer in-process.
+#          Migrations run manually via Render Shell in v1 because Render gates
+#          preDeployCommand behind paid instances. When v1.1 pays for the
+#          always-on worker, restore this line under the service:
+#            preDeployCommand: npx prisma migrate deploy
+#
+services:
+  - type: web
+    name: bog-api-web
+    runtime: node
+    rootDir: server
+    buildCommand: npm ci && npm run build && npx prisma generate
+    startCommand: node dist/src/server.js
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        sync: false
+      - key: DIRECT_URL
+        sync: false
+      - key: REDIS_URL
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: SMARTSMS_TOKEN
+        sync: false
+      - key: SMARTSMS_SENDER
+        sync: false
+      - key: CHURCH_ID
+        sync: false
+      - key: SMS_RATE_NGN
+        value: "5"
+      - key: QUIET_START
+        value: "21:00"
+      - key: QUIET_END
+        value: "07:00"
+      - key: TZ
+        value: "Africa/Lagos"
