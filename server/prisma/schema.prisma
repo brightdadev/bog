@@ -25,6 +25,7 @@ model Church {
   optOuts   OptOut[]
   txns      CreditTxn[]
   audits    Audit[]
+  templates Template[]
   createdAt DateTime @default(now())
 }
 
