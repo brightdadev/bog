@@ -16,8 +16,11 @@ export interface AuthUser {
   name: string;
 }
 
-declare module 'fastify' {
-  interface FastifyRequest {
+// Supported augmentation point: telling @fastify/jwt what OUR token user
+// looks like re-types request.user app-wide. (Augmenting FastifyRequest.user
+// directly collides with the plugin's own declaration -> TS2717.)
+declare module '@fastify/jwt' {
+  interface FastifyJWT {
     user: AuthUser;
   }
 }
