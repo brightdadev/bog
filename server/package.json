@@ -17,7 +17,9 @@
   },
   "dependencies": {
     "fastify": "^5.1.0",
+    "@fastify/jwt": "^9.0.1",
     "@prisma/client": "^6.0.1",
+    "bcryptjs": "^3.0.2",
     "bullmq": "^5.29.1",
     "ioredis": "^5.4.1",
     "zod": "^3.23.8",
