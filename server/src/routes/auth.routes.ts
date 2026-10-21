@@ -24,6 +24,7 @@ const changeSchema = z.object({
 
 export async function authRoutes(app: FastifyInstance): Promise<void> {
   app.post('/auth/login', async (request, reply) => {
+    console.log('>>> JWT FIX APPLIED - USING reply.jwtSign <<<');
     const body = loginSchema.parse(request.body);
     const user = await db.user.findUnique({ where: { email: body.email.toLowerCase().trim() } });
     const ok = user ? await verifyPassword(body.password, user.passHash) : false;
@@ -34,7 +35,9 @@ export async function authRoutes(app: FastifyInstance): Promise<void> {
       return reply.code(403).send({ error: 'Forbidden', message: 'This deployment does not serve your organization.' });
     }
     const payload: AuthUser = { id: user.id, churchId: user.churchId, email: user.email, name: user.name };
-    const token = app.jwt.sign(payload, { expiresIn: '7d' });
+    
+    const token = await reply.jwtSign(payload, { expiresIn: '7d' });
+    
     await db.audit.create({
       data: { churchId: user.churchId, actorId: user.id, action: 'auth.login', entity: 'user', entityId: user.id },
     });
